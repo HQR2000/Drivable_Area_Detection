@@ -14,4 +14,6 @@ The dataset used for the training of traditional object detection method can be 
 
 ## Result Analysis
 As shown in the figures below, it's clear that the robustness of the baseline model is very low, it will be easily affected by lighting, environment, reflection and other factors, resulting in the failure to successfully locate the vehicles.
-[drawback1]()[drawback2]()
+
+[drawback1](https://github.com/HQR2000/Drivable_Area_Detection/blob/main/Public/drawback1.jpg)
+[drawback2](https://github.com/HQR2000/Drivable_Area_Detection/blob/main/Public/drawback2.jpg)
