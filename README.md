@@ -60,3 +60,33 @@ Secondly, the baseline model only choose the lower half of the image as the regi
 
 Thirdly, the baseline model can only detect the two lane lines directly in front of the vehicle, but BDD100K dataset contains annotations of all the lane lines. 
 
+## Appendix
+
+Here are some of the errors we met while running YOLOP, we list them out here for your reference.
+
+* `IndexError: boolean index did not match indexed array along dimension 0`
+
+Solution: Add the following code to tools/demo.py line 130 and delete line 60 in `./lib/utils/plot.py`.
+
+`img_det=cv2.resize(img_det,(da_seg_mask.shape[1],da_seg_mask.shape[0]) ,interpolation=cv2.INTER_AREA)`
+
+Then add the following code to “demo.py” line 148 and run “demo.py” to check the result.
+
+`cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("test", int(img_det.shape[1] * 0.5), int(img_det.shape[0] * 0.5))
+cv2.imshow("test", img_det)
+cv2.waitKey(30)`
+
+* `TypeError: can’t pickle generator objects，EOFError: Ran out of input`
+
+Solution: Modify `./lib/config/default.py` in line 9 to `_C.WORKERS=0`.
+
+* `RuntimeError: CUDA out of memory`
+
+Solution: Modify `./lib/config/default.py` in line 19 to `_C.CUDNN.BENCHMARK = False`.
+
+* `AttributeError: ‘list’ object has no attribute ‘seek’. You can only torch.load from a file that is seekable. Please pre-load the data into a buffer like io.BytesIO and try to load from it`
+
+Solution: Delete `nargs=’+’`in line 39 of `./test.py`.
+
+
