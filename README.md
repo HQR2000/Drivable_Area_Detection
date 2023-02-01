@@ -64,7 +64,7 @@ Thirdly, the baseline model can only detect the two lane lines directly in front
 
 Here are some of the errors we met while running YOLOP, we list them out here for your reference.
 
-* `IndexError: boolean index did not match indexed array along dimension 0`
+1. `IndexError: boolean index did not match indexed array along dimension 0`
 
 Solution: Add the following code to tools/demo.py line 130 and delete line 60 in `./lib/utils/plot.py`.
 
@@ -77,15 +77,18 @@ cv2.resizeWindow("test", int(img_det.shape[1] * 0.5), int(img_det.shape[0] * 0.5
 cv2.imshow("test", img_det)
 cv2.waitKey(30)`
 
-* `TypeError: can’t pickle generator objects，EOFError: Ran out of input`
+
+2. `TypeError: can’t pickle generator objects，EOFError: Ran out of input`
 
 Solution: Modify `./lib/config/default.py` in line 9 to `_C.WORKERS=0`.
 
-* `RuntimeError: CUDA out of memory`
+
+3. `RuntimeError: CUDA out of memory`
 
 Solution: Modify `./lib/config/default.py` in line 19 to `_C.CUDNN.BENCHMARK = False`.
 
-* `AttributeError: ‘list’ object has no attribute ‘seek’. You can only torch.load from a file that is seekable. Please pre-load the data into a buffer like io.BytesIO and try to load from it`
+
+4. `AttributeError: ‘list’ object has no attribute ‘seek’. You can only torch.load from a file that is seekable. Please pre-load the data into a buffer like io.BytesIO and try to load from it`
 
 Solution: Delete `nargs=’+’`in line 39 of `./test.py`.
 
