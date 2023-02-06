@@ -92,4 +92,16 @@ Solution: Modify `./lib/config/default.py` in line 19 to `_C.CUDNN.BENCHMARK = F
 
 Solution: Delete `nargs=’+’`in line 39 of `./test.py`.
 
+### Project Structure
+
+```
+├─code
+│ ├─Final_Notebook.ipynb   # Jupyter Notebook for this project 
+├─Public   # Some of the example images
+├─data
+│ ├─non-vehicles  # Non-vehicle dataset for baseline model
+│ ├─vehicles  # Vehicle dataset for baseline model
+
+```
+
 
